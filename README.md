@@ -85,8 +85,8 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_cluster_id"></a> [civo\_resource\_id](#output\_civo\_resource\_id) | The ID of the Kubernetes cluster. |
-| <a name="output_network_id"></a> [civo\_resource\_id](#output\_civo\_resource\_id) | The ID of the Civo network. |
+| <a name="output_cluster_id"></a> [civo\_cluster\_id](#output\_civo\_cluster\_id) | The ID of the Kubernetes cluster. |
+| <a name="output_network_id"></a> [civo\_network\_id](#output\_civo\_network\_id) | The ID of the Civo network. |
 <!-- END_TF_DOCS -->
 
 ## License
