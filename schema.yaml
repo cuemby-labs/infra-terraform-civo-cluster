@@ -1,10 +1,157 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for template walrus-template-template
+  title: OpenAPI schema for template .
 components:
   schemas:
     variables:
       type: object
+      required:
+      - cluster_name
+      - firewall_name
+      - network_label
+      - node_pool_label
+      properties:
+        cluster_name:
+          title: Cluster Name
+          type: string
+          description: Name of the Kubernetes cluster
+          x-walrus-ui:
+            group: Basic
+            order: 2
+        applications:
+          title: Applications
+          type: string
+          description: Comma-separated list of applications to install
+          default: civo-cluster-autoscaler,helm
+          x-walrus-ui:
+            group: Basic
+            order: 3
+        kubernetes_version:
+          title: Kubernetes Version
+          type: string
+          description: Version of Kubernetes to use
+          default: 1.27.0
+          x-walrus-ui:
+            group: Basic
+            order: 4
+        region:
+          title: Region
+          type: string
+          description: Civo region to deploy the cluster
+          default: NYC1
+          x-walrus-ui:
+            group: Basic
+            order: 5
+        cluster_type:
+          title: Cluster Type
+          type: string
+          description: Type of cluster (e.g., talos, k3s)
+          default: talos
+          x-walrus-ui:
+            group: Basic
+            order: 6
+        cni:
+          title: Cni
+          type: string
+          description: CNI plugin to use (e.g., flannel, cilium)
+          default: flannel
+          x-walrus-ui:
+            group: Basic
+            order: 7
+        node_pool_label:
+          title: Node Pool Label
+          type: string
+          description: Label for the node pool
+          x-walrus-ui:
+            group: Basic
+            order: 8
+        node_size:
+          title: Node Size
+          type: string
+          description: Size of the nodes in the pool
+          default: g4s.kube.small
+          x-walrus-ui:
+            group: Basic
+            order: 9
+        node_count:
+          title: Node Count
+          type: number
+          description: Number of nodes in the pool
+          default: 3
+          x-walrus-ui:
+            group: Basic
+            order: 10
+        network_label:
+          title: Network Label
+          type: string
+          description: Label for the network
+          x-walrus-ui:
+            group: Basic
+            order: 11
+        network_cidr_v4:
+          title: Network Cidr V4
+          type: string
+          description: CIDR block for the network
+          default: 192.168.0.0/24
+          x-walrus-ui:
+            group: Basic
+            order: 12
+        network_nameservers_v4:
+          title: Network Nameservers V4
+          type: array
+          description: List of nameservers for the network
+          default:
+          - 8.8.8.8
+          - 1.1.1.1
+          items:
+            type: string
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 13
+        firewall_name:
+          title: Firewall Name
+          type: string
+          description: Name of the firewall rule set
+          x-walrus-ui:
+            group: Basic
+            order: 14
+        external_network:
+          title: External Network
+          type: array
+          description: external CIDR for kubectl access
+          default:
+          - 0.0.0.0/0
+          items:
+            type: string
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 15
+        default_cidr:
+          title: Default Cidr
+          type: array
+          description: default CIDR 0.0.0.0/0
+          default:
+          - 0.0.0.0/0
+          items:
+            type: string
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 16
+        local_cidr:
+          title: Local Cidr
+          type: array
+          description: Local CIDR for ingress firewall rules
+          default:
+          - 192.16.0.0/20
+          items:
+            type: string
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 17
       x-walrus-ui:
         groupOrder:
         - Basic
