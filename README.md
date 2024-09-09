@@ -87,13 +87,6 @@ No modules.
 |------|-------------|
 | <a name="output_cluster_id"></a> [civo\_resource\_id](#output\_civo\_resource\_id) | The ID of the Kubernetes cluster. |
 | <a name="output_network_id"></a> [civo\_resource\_id](#output\_civo\_resource\_id) | The ID of the Civo network. |
-| <a name="output_submodule"></a> [submodule](#output\_submodule) | The message from submodule. |
-| <a name="output_walrus_environment_id"></a> [walrus\_environment\_id](#output\_walrus\_environment\_id) | The id of environment where deployed in Walrus. |
-| <a name="output_walrus_environment_name"></a> [walrus\_environment\_name](#output\_walrus\_environment\_name) | The name of environment where deployed in Walrus. |
-| <a name="output_walrus_project_id"></a> [walrus\_project\_id](#output\_walrus\_project\_id) | The id of project where deployed in Walrus. |
-| <a name="output_walrus_project_name"></a> [walrus\_project\_name](#output\_walrus\_project\_name) | The name of project where deployed in Walrus. |
-| <a name="output_walrus_resource_id"></a> [walrus\_resource\_id](#output\_walrus\_resource\_id) | The id of resource where deployed in Walrus. |
-| <a name="output_walrus_resource_name"></a> [walrus\_resource\_name](#output\_walrus\_resource\_name) | The name of resource where deployed in Walrus. |
 <!-- END_TF_DOCS -->
 
 ## License
