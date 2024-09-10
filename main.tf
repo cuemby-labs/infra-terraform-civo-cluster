@@ -63,7 +63,7 @@ resource "civo_firewall" "this" {
 
     name                 = var.firewall_name
     create_default_rules = false
-    network_id           = civo_network.this.id
+    network_id           = civo_network.this[count.index].id
     region               = var.region
 
     egress_rule {
