@@ -35,7 +35,14 @@ resource "civo_kubernetes_cluster" "this" {
 # Civo network
 #
 
+data "civo_network" "existing" {
+  label  = var.network_label
+  region = var.region
+}
+
 resource "civo_network" "this" {
+    count = length(data.civo_network.existing.id) == 0 ? 1 : 0
+
     label          = var.network_label
     cidr_v4        = var.network_cidr_v4
     region         = var.region
@@ -46,7 +53,14 @@ resource "civo_network" "this" {
 # Civo firewall rules
 #
 
+data "civo_firewall" "existing" {
+  name   = var.firewall_name
+  region = var.region
+}
+
 resource "civo_firewall" "this" {
+    count = length(data.civo_firewall.existing.id) == 0 ? 1 : 0
+
     name                 = var.firewall_name
     create_default_rules = false
     network_id           = civo_network.this.id
