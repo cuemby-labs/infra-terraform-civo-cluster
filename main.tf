@@ -41,7 +41,7 @@ data "civo_network" "existing" {
 }
 
 resource "civo_network" "this" {
-    count = length(data.civo_network.existing.id) == 0 ? 1 : 0
+    count = length(data.civo_network.existing) == 0 ? 1 : 0
 
     label          = var.network_label
     cidr_v4        = var.network_cidr_v4
@@ -59,11 +59,11 @@ data "civo_firewall" "existing" {
 }
 
 resource "civo_firewall" "this" {
-    count = length(data.civo_firewall.existing.id) == 0 ? 1 : 0
+    count = length(data.civo_firewall.existing) == 0 ? 1 : 0
 
     name                 = var.firewall_name
     create_default_rules = false
-    network_id           = civo_network.this[count.index].id
+    network_id           = civo_network.this.id
     region               = var.region
 
     egress_rule {
