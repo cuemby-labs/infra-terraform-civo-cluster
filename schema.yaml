@@ -53,7 +53,7 @@ components:
         cni:
           title: Cni
           type: string
-          description: CNI plugin to use (e.g., flannel, cilium)
+          description: CNI plugin to use (e.g., flannel for talos, cilium for k3s)
           default: flannel
           x-walrus-ui:
             group: Basic

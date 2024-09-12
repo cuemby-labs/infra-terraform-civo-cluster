@@ -55,23 +55,12 @@ variable "cluster_type" {
   description = "Type of cluster (e.g., talos, k3s)"
   type        = string
   default     = "talos"
-  validation {
-    condition     = contains(["talos", "k3s"], var.cluster_type)
-    error_message = "Invalid cluster_type. Supported values are: talos, k3s."
-  }
 }
 
 variable "cni" {
-  description = "CNI plugin to use (e.g., flannel, cilium)"
+  description = "CNI plugin to use (e.g., flannel for talos, cilium for k3s)"
   type        = string
   default     = "flannel"
-  validation {
-    condition = (
-      (var.cluster_type == "talos" && var.cni == "flannel") ||
-      (var.cluster_type == "k3s" && var.cni == "cilium")
-    )
-    error_message = "For 'talos' cluster_type, 'flannel' must be used as CNI. For 'k3s', 'cilium' must be used as CNI."
-  }
 }
 
 variable "node_pool_label" {
