@@ -14,11 +14,11 @@ module "civo_k8s_cluster" {
   node_pool_label        = "civo-node-pool"
   network_cidr_v4        = "192.168.0.0/24"
   network_nameservers_v4 = ["8.8.8.8", "1.1.1.1"]
-  kubernetes_version     = "1.27.0"
+  kubernetes_version     = "1.28.7-k3s1"
   region                 = "NYC1"
-  cluster_type           = "talos"
-  cni                    = "flannel"
-  node_size              = "g4s.kube.small"
+  cluster_type           = "k3s"
+  cni                    = "cilium"
+  node_size              = "g4p.kube.small"
   node_count             = 3
   local_cidr             = ["192.168.0.0/24"]
   external_network       = ["0.0.0.0/0"]
@@ -70,7 +70,7 @@ No modules.
 | <a name="input_node_pool_label"></a> [node_pool_label](#input\_node_pool_label) | Label for the node pool. | `string` | n/a | yes |
 | <a name="input_network_cidr_v4"></a> [network_cidr_v4](#input\_network\_cidr\_v4) | CIDR block for the network. | `string` | n/a | yes |
 | <a name="input_network_nameservers_v4"></a> [network_nameservers_v4](#input\_network_nameservers_v4) | List of nameservers for the network. | `list(string)` | `["8.8.8.8", "1.1.1.1"]` | no |
-| <a name="input_kubernetes_version"></a> [kubernetes_version](#input\_kubernetes_version) | Version of Kubernetes to use. | `string` | `"1.27.0"` | no |
+| <a name="input_kubernetes_version"></a> [kubernetes_version](#input\_kubernetes_version) | Version of Kubernetes to use. | `string` | `"1.27.0" or "1.28.7-k3s1"` | no |
 | <a name="input_region"></a> [region](#input\_region) | Civo region to deploy the cluster. | `string` | `"NYC1"` | no |
 | <a name="input_cluster_type"></a> [cluster_type](#input\_cluster_type) | Type of cluster (e.g., `talos`, `k3s`). | `string` | `"talos"` | no |
 | <a name="input_cni"></a> [cni](#input\_cni) | CNI plugin to use (e.g., `flannel`, `cilium`). | `string` | `"flannel"` | no |
@@ -86,7 +86,12 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_cluster_id"></a> [civo\_cluster\_id](#output\_civo\_cluster\_id) | The ID of the Kubernetes cluster. |
-| <a name="output_network_id"></a> [civo\_network\_id](#output\_civo\_network\_id) | The ID of the Civo network. |
+| <a name="output_walrus_environment_id"></a> [walrus\_environment\_id](#output\_walrus\_environment\_id) | The id of environment where deployed in Walrus. |
+| <a name="output_walrus_environment_name"></a> [walrus\_environment\_name](#output\_walrus\_environment\_name) | The name of environment where deployed in Walrus. |
+| <a name="output_walrus_project_id"></a> [walrus\_project\_id](#output\_walrus\_project\_id) | The id of project where deployed in Walrus. |
+| <a name="output_walrus_project_name"></a> [walrus\_project\_name](#output\_walrus\_project\_name) | The name of project where deployed in Walrus. |
+| <a name="output_walrus_resource_id"></a> [walrus\_resource\_id](#output\_walrus\_resource\_id) | The id of resource where deployed in Walrus. |
+| <a name="output_walrus_resource_name"></a> [walrus\_resource\_name](#output\_walrus\_resource\_name) | The name of resource where deployed in Walrus. |
 <!-- END_TF_DOCS -->
 
 ## License

@@ -1,13 +1,3 @@
-locals {
-  context = var.context
-}
-
-module "submodule" {
-  source = "./modules/submodule"
-
-  message = "Hello, submodule"
-}
-
 #
 # Civo kubernetes cluster
 #
@@ -105,4 +95,12 @@ resource "civo_firewall" "this" {
         port_range = "6443"
         protocol   = "tcp"
     }
+}
+
+#
+# Walrus information
+#
+
+locals {
+  context = var.context
 }

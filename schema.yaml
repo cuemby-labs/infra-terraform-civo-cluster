@@ -17,7 +17,7 @@ components:
           description: Name of the Kubernetes cluster
           x-walrus-ui:
             group: Basic
-            order: 2
+            order: 1
         applications:
           title: Applications
           type: string
@@ -25,15 +25,15 @@ components:
           default: civo-cluster-autoscaler,helm
           x-walrus-ui:
             group: Basic
-            order: 3
+            order: 2
         kubernetes_version:
           title: Kubernetes Version
           type: string
           description: Version of Kubernetes to use
-          default: 1.27.0
+          default: 1.28.7-k3s1
           x-walrus-ui:
             group: Basic
-            order: 4
+            order: 3
         region:
           title: Region
           type: string
@@ -41,38 +41,38 @@ components:
           default: NYC1
           x-walrus-ui:
             group: Basic
-            order: 5
+            order: 4
         cluster_type:
           title: Cluster Type
           type: string
           description: Type of cluster (e.g., talos, k3s)
-          default: talos
+          default: k3s
           x-walrus-ui:
             group: Basic
-            order: 6
+            order: 5
         cni:
           title: Cni
           type: string
           description: CNI plugin to use (e.g., flannel for talos, cilium for k3s)
-          default: flannel
+          default: cilium
           x-walrus-ui:
             group: Basic
-            order: 7
+            order: 6
         node_pool_label:
           title: Node Pool Label
           type: string
           description: Label for the node pool
           x-walrus-ui:
             group: Basic
-            order: 8
+            order: 7
         node_size:
           title: Node Size
           type: string
           description: Size of the nodes in the pool
-          default: g4s.kube.small
+          default: g4p.kube.small
           x-walrus-ui:
             group: Basic
-            order: 9
+            order: 8
         node_count:
           title: Node Count
           type: number
@@ -80,14 +80,14 @@ components:
           default: 3
           x-walrus-ui:
             group: Basic
-            order: 10
+            order: 9
         network_label:
           title: Network Label
           type: string
           description: Label for the network
           x-walrus-ui:
             group: Basic
-            order: 11
+            order: 10
         network_cidr_v4:
           title: Network Cidr V4
           type: string
@@ -95,7 +95,7 @@ components:
           default: 192.168.0.0/24
           x-walrus-ui:
             group: Basic
-            order: 12
+            order: 11
         network_nameservers_v4:
           title: Network Nameservers V4
           type: array
@@ -108,14 +108,14 @@ components:
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 13
+            order: 12
         firewall_name:
           title: Firewall Name
           type: string
           description: Name of the firewall rule set
           x-walrus-ui:
             group: Basic
-            order: 14
+            order: 13
         external_network:
           title: External Network
           type: array
@@ -127,7 +127,7 @@ components:
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 15
+            order: 14
         default_cidr:
           title: Default Cidr
           type: array
@@ -139,19 +139,19 @@ components:
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 16
+            order: 15
         local_cidr:
           title: Local Cidr
           type: array
           description: Local CIDR for ingress firewall rules
           default:
-          - 192.16.0.0/20
+          - 192.168.0.0/24
           items:
             type: string
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 17
+            order: 16
       x-walrus-ui:
         groupOrder:
         - Basic

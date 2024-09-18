@@ -1,30 +1,4 @@
 #
-# Contextual Fields
-#
-
-variable "context" {
-  description = <<-EOF
-Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.
-
-Examples:
-```
-context:
-  project:
-    name: string
-    id: string
-  environment:
-    name: string
-    id: string
-  resource:
-    name: string
-    id: string
-```
-EOF
-  type        = map(any)
-  default     = {}
-}
-
-#
 # Variables for Civo Kubernetes cluster
 #
 
@@ -42,7 +16,7 @@ variable "applications" {
 variable "kubernetes_version" {
   description = "Version of Kubernetes to use"
   type        = string
-  default     = "1.27.0"
+  default     = "1.28.7-k3s1"
 }
 
 variable "region" {
@@ -54,13 +28,13 @@ variable "region" {
 variable "cluster_type" {
   description = "Type of cluster (e.g., talos, k3s)"
   type        = string
-  default     = "talos"
+  default     = "k3s"
 }
 
 variable "cni" {
   description = "CNI plugin to use (e.g., flannel for talos, cilium for k3s)"
   type        = string
-  default     = "flannel"
+  default     = "cilium"
 }
 
 variable "node_pool_label" {
@@ -71,7 +45,7 @@ variable "node_pool_label" {
 variable "node_size" {
   description = "Size of the nodes in the pool"
   type        = string
-  default     = "g4s.kube.small"
+  default     = "g4p.kube.small"
 }
 
 variable "node_count" {
@@ -125,5 +99,31 @@ variable "default_cidr" {
 variable "local_cidr" {
   description = "Local CIDR for ingress firewall rules"
   type        = list(string)
-  default     = ["192.16.0.0/20"]
+  default     = ["192.168.0.0/24"]
+}
+
+#
+# Walrus Contextual Fields
+#
+
+variable "context" {
+  description = <<-EOF
+Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.
+
+Examples:
+```
+context:
+  project:
+    name: string
+    id: string
+  environment:
+    name: string
+    id: string
+  resource:
+    name: string
+    id: string
+```
+EOF
+  type        = map(any)
+  default     = {}
 }
