@@ -1,9 +1,20 @@
 #
+# Random number
+#
+
+provider "random" {}
+
+resource "random_password" "random" {
+  length  = 6
+  special = false
+}
+
+#
 # Civo kubernetes cluster
 #
 
 resource "civo_kubernetes_cluster" "this" {
-    name               = var.cluster_name
+    name               = "${var.cluster_name}-${random_password.random.result}"
     applications       = var.applications
     network_id         = civo_network.this.id
     firewall_id        = civo_firewall.this.id
