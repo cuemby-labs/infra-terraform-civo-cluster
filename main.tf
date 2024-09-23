@@ -13,8 +13,12 @@ resource "random_password" "random" {
 # Civo kubernetes cluster
 #
 
+locals {
+  walrus_environment_name = try(local.context["environment"]["name"], null)
+}
+
 resource "civo_kubernetes_cluster" "this" {
-    name               = "${var.cluster_name}-${random_password.random.result}"
+    name               = "${var.cluster_name}-${local.walrus_environment_name}-${random_password.random.result}"
     applications       = var.applications
     network_id         = civo_network.this.id
     firewall_id        = civo_firewall.this.id
@@ -37,7 +41,7 @@ resource "civo_kubernetes_cluster" "this" {
 #
 
 resource "civo_network" "this" {
-    label          = var.network_label
+    label          = "${var.cluster_name}-network-${local.walrus_environment_name}-${random_password.random.result}"
     cidr_v4        = var.network_cidr_v4
     region         = var.region
     nameservers_v4 = var.network_nameservers_v4
@@ -48,7 +52,7 @@ resource "civo_network" "this" {
 #
 
 resource "civo_firewall" "this" {
-    name                 = var.firewall_name
+    name                 = "${var.cluster_name}-fw-${local.walrus_environment_name}-${random_password.random.result}"
     create_default_rules = false
     network_id           = civo_network.this.id
     region               = var.region

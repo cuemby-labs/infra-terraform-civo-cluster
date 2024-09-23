@@ -58,11 +58,6 @@ variable "node_count" {
 # Variables for Civo network
 #
 
-variable "network_label" {
-  description = "Label for the network"
-  type        = string
-}
-
 variable "network_cidr_v4" {
   description = "CIDR block for the network"
   type        = string
@@ -78,11 +73,6 @@ variable "network_nameservers_v4" {
 #
 # Variables for Civo firewall
 #
-
-variable "firewall_name" {
-  description = "Name of the firewall rule set"
-  type        = string
-}
 
 variable "external_network" {
   description = "external CIDR for kubectl access"
