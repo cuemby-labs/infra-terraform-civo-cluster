@@ -30,7 +30,7 @@ resource "civo_kubernetes_cluster" "this" {
     cni                = var.cni
 
     pools {
-        label      = var.node_pool_label
+        label      = "${var.cluster_name}-node-${local.walrus_environment_name}-${random_password.random.result}"
         size       = var.node_size
         node_count = var.node_count
     }

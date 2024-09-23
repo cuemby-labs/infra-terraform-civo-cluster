@@ -7,7 +7,6 @@ components:
       type: object
       required:
       - cluster_name
-      - node_pool_label
       properties:
         cluster_name:
           title: Cluster Name
@@ -56,13 +55,6 @@ components:
           x-walrus-ui:
             group: Basic
             order: 6
-        node_pool_label:
-          title: Node Pool Label
-          type: string
-          description: Label for the node pool
-          x-walrus-ui:
-            group: Basic
-            order: 7
         node_size:
           title: Node Size
           type: string
@@ -70,7 +62,7 @@ components:
           default: g4p.kube.small
           x-walrus-ui:
             group: Basic
-            order: 8
+            order: 7
         node_count:
           title: Node Count
           type: number
@@ -78,7 +70,7 @@ components:
           default: 3
           x-walrus-ui:
             group: Basic
-            order: 9
+            order: 8
         network_cidr_v4:
           title: Network Cidr V4
           type: string
@@ -86,7 +78,7 @@ components:
           default: 192.168.0.0/24
           x-walrus-ui:
             group: Basic
-            order: 10
+            order: 9
         network_nameservers_v4:
           title: Network Nameservers V4
           type: array
@@ -99,7 +91,7 @@ components:
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 11
+            order: 10
         external_network:
           title: External Network
           type: array
@@ -111,7 +103,7 @@ components:
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 12
+            order: 11
         default_cidr:
           title: Default Cidr
           type: array
@@ -123,7 +115,7 @@ components:
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 13
+            order: 12
         local_cidr:
           title: Local Cidr
           type: array
@@ -135,7 +127,7 @@ components:
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 14
+            order: 13
       x-walrus-ui:
         groupOrder:
         - Basic

@@ -37,11 +37,6 @@ variable "cni" {
   default     = "cilium"
 }
 
-variable "node_pool_label" {
-  description = "Label for the node pool"
-  type        = string
-}
-
 variable "node_size" {
   description = "Size of the nodes in the pool"
   type        = string
