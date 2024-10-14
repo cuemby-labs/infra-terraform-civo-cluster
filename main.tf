@@ -5,8 +5,9 @@
 provider "random" {}
 
 resource "random_password" "random" {
-  length  = 6
+  length  = 4
   special = false
+  upper   = false
 }
 
 #

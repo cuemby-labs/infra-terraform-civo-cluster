@@ -9,18 +9,16 @@ module "civo_k8s_cluster" {
   source = "https://github.com/cuemby-labs/infra-terraform-civo-cluster"
 
   cluster_name           = "civo-cluster"
-  network_label          = "civo-network"
-  firewall_name          = "civo-fw-rule"
-  node_pool_label        = "civo-node-pool"
-  network_cidr_v4        = "192.168.0.0/24"
-  network_nameservers_v4 = ["8.8.8.8", "1.1.1.1"]
+  applications           = "civo-cluster-autoscaler,helm"
   kubernetes_version     = "1.28.7-k3s1"
   region                 = "NYC1"
   cluster_type           = "k3s"
   cni                    = "cilium"
   node_size              = "g4p.kube.small"
   node_count             = 3
+  network_cidr_v4        = "192.168.0.0/24"
   local_cidr             = ["192.168.0.0/24"]
+  network_nameservers_v4 = ["8.8.8.8", "1.1.1.1"]
   external_network       = ["0.0.0.0/0"]
   default_cidr           = ["0.0.0.0/0"]
 }
@@ -59,16 +57,15 @@ No modules.
 | [civo_kubernetes_cluster.my-cluster](https://registry.terraform.io/providers/civo/civo/latest/docs/resources/kubernetes_cluster) | resource |
 | [civo_network.custom_net](https://registry.terraform.io/providers/civo/civo/latest/docs/resources/network) | resource |
 | [civo_firewall.custom_rule](https://registry.terraform.io/providers/civo/civo/latest/docs/resources/firewall) | resource |
+| [random_password.password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_name"></a> [cluster_name](#input\_cluster_name) | Name of the Kubernetes cluster. | `string` | n/a | yes |
-| <a name="input_network_label"></a> [network_label](#input\_network_label) | Label for the network. | `string` | n/a | yes |
-| <a name="input_firewall_name"></a> [firewall_name](#input\_firewall_name) | Name of the firewall rule set. | `string` | n/a | yes |
-| <a name="input_node_pool_label"></a> [node_pool_label](#input\_node_pool_label) | Label for the node pool. | `string` | n/a | yes |
-| <a name="input_network_cidr_v4"></a> [network_cidr_v4](#input\_network\_cidr\_v4) | CIDR block for the network. | `string` | n/a | yes |
+| <a name="input_applications"></a> [applications](#input\_applications) | List of the Civo Applications for the K8 cluster. | `string` | "civo-cluster-autoscaler,helm" | no |
+| <a name="input_network_cidr_v4"></a> [network_cidr_v4](#input\_network\_cidr\_v4) | CIDR block for the network. | `string` | "192.168.0.0/24" | no |
 | <a name="input_network_nameservers_v4"></a> [network_nameservers_v4](#input\_network_nameservers_v4) | List of nameservers for the network. | `list(string)` | `["8.8.8.8", "1.1.1.1"]` | no |
 | <a name="input_kubernetes_version"></a> [kubernetes_version](#input\_kubernetes_version) | Version of Kubernetes to use. | `string` | `"1.27.0" or "1.28.7-k3s1"` | no |
 | <a name="input_region"></a> [region](#input\_region) | Civo region to deploy the cluster. | `string` | `"NYC1"` | no |
