@@ -2,8 +2,6 @@
 # Random number
 #
 
-provider "random" {}
-
 resource "random_password" "random" {
   length  = 4
   special = false
