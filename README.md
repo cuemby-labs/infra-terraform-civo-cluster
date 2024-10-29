@@ -1,6 +1,6 @@
 # Civo Cluster Template
 
-Terraform module which deploys Civo kubernetes cluster on CIVO provider.
+Terraform module which deploys kubernetes cluster on CIVO provider.
 
 ## Usage
 
@@ -67,11 +67,11 @@ No modules.
 | <a name="input_applications"></a> [applications](#input\_applications) | List of the Civo Applications for the K8 cluster. | `string` | "civo-cluster-autoscaler,helm" | no |
 | <a name="input_network_cidr_v4"></a> [network_cidr_v4](#input\_network\_cidr\_v4) | CIDR block for the network. | `string` | "192.168.0.0/24" | no |
 | <a name="input_network_nameservers_v4"></a> [network_nameservers_v4](#input\_network_nameservers_v4) | List of nameservers for the network. | `list(string)` | `["8.8.8.8", "1.1.1.1"]` | no |
-| <a name="input_kubernetes_version"></a> [kubernetes_version](#input\_kubernetes_version) | Version of Kubernetes to use. | `string` | `"1.27.0" or "1.28.7-k3s1"` | no |
+| <a name="input_kubernetes_version"></a> [kubernetes_version](#input\_kubernetes_version) | Version of Kubernetes to use, list them running 'civo kubernetes versions'. | `string` | `"1.27.0" or "1.28.7-k3s1"` | no |
 | <a name="input_region"></a> [region](#input\_region) | Civo region to deploy the cluster. | `string` | `"NYC1"` | no |
 | <a name="input_cluster_type"></a> [cluster_type](#input\_cluster_type) | Type of cluster (e.g., `talos`, `k3s`). | `string` | `"talos"` | no |
 | <a name="input_cni"></a> [cni](#input\_cni) | CNI plugin to use (e.g., `flannel`, `cilium`). | `string` | `"flannel"` | no |
-| <a name="input_node_size"></a> [node_size](#input\_node_size) | Size of the nodes in the pool. | `string` | `"g4p.kube.small"` | no |
+| <a name="input_node_size"></a> [node_size](#input\_node_size) | Size of the nodes in the pool, list them running 'civo kubernetes size'. | `string` | `"g4p.kube.small"` | no |
 | <a name="input_node_count"></a> [node_count](#input\_node_count) | Number of nodes in the pool. | `number` | `3` | no |
 | <a name="input_local_cidr"></a> [local_cidr](#input\_local_cidr) | Local CIDR for ingress firewall rules. | `list(string)` | `["192.168.0.0/24"]` | no |
 | <a name="input_external_network"></a> [external_network](#input\_external_network) | external CIDR for kubectl access. | `list(string)` | `["0.0.0.0/0"]` | no |

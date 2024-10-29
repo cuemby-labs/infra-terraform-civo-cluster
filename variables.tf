@@ -14,7 +14,7 @@ variable "applications" {
 }
 
 variable "kubernetes_version" {
-  description = "Version of Kubernetes to use"
+  description = "Version of Kubernetes to use, list them running 'civo kubernetes versions'"
   type        = string
   default     = "1.28.7-k3s1"
 }
@@ -38,7 +38,7 @@ variable "cni" {
 }
 
 variable "node_size" {
-  description = "Size of the nodes in the pool"
+  description = "Size of the nodes in the pool, list them running 'civo kubernetes size'"
   type        = string
   default     = "g4p.kube.small"
 }

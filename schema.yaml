@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for Civo kubernetes cluster template on CIVO provider.
+  title: OpenAPI schema for kubernetes cluster template on CIVO provider.
 components:
   schemas:
     variables:
@@ -26,7 +26,7 @@ components:
         kubernetes_version:
           title: Kubernetes Version
           type: string
-          description: Version of Kubernetes to use
+          description: Version of Kubernetes to use, list them running 'civo kubernetes versions'
           default: 1.28.7-k3s1
           x-walrus-ui:
             group: Basic
@@ -36,6 +36,11 @@ components:
           type: string
           description: Civo region to deploy the cluster
           default: NYC1
+          enum:
+          - NYC1
+          - PHX1
+          - FRA1
+          - LON1
           x-walrus-ui:
             group: Basic
             order: 4
@@ -44,22 +49,49 @@ components:
           type: string
           description: Type of cluster (e.g., talos, k3s)
           default: k3s
+          enum:
+          - k3s
+          - talos
           x-walrus-ui:
             group: Basic
             order: 5
         cni:
-          title: Cni
+          title: CNI
           type: string
           description: CNI plugin to use (e.g., flannel for talos, cilium for k3s)
           default: cilium
+          enum:
+          - cilium
+          - flannel
           x-walrus-ui:
             group: Basic
             order: 6
         node_size:
           title: Node Size
           type: string
-          description: Size of the nodes in the pool
+          description: Size of the nodes in the pool, list them running 'civo kubernetes size'
           default: g4p.kube.small
+          enum:
+          - g4s.kube.xsmall
+          - g4s.kube.small
+          - g4s.kube.medium
+          - g4s.kube.large
+          - g4p.kube.small
+          - g4p.kube.medium
+          - g4p.kube.large
+          - g4p.kube.xlarge
+          - g4c.kube.small
+          - g4c.kube.medium
+          - g4c.kube.large
+          - g4c.kube.xlarge
+          - g4m.kube.small
+          - g4m.kube.medium
+          - g4m.kube.large
+          - g4m.kube.xlarge
+          - an.g1.l40s.kube.x1
+          - an.g1.l40s.kube.x2
+          - an.g1.l40s.kube.x4
+          - an.g1.l40s.kube.x8
           x-walrus-ui:
             group: Basic
             order: 7
